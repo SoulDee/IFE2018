@@ -1,102 +1,123 @@
 /* 样式重置 */
-*{box-sizing: border-box;}
-html,body,p,h1,h2,h3 {
-    margin: 0;
-    padding: 0;
+* {
+    box-sizing: border-box;
 }
-ul,li{
+body, html {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    min-width: 360px;
+}
+ul,li {
     list-style: none;
-    margin: 0;
     padding: 0;
 }
-.claerFix::after {
+.clearFix::after {
     display: block;
     content: '';
     height: 0;
     clear: both;
 }
-.claerFix {
+.clearFix {
     *zoom: 1;
 }
-/* 导航样式 */
-nav {
-    position: fixed;
-    left: 0;
+nav a {
+    color: #eee;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
+nav a:hover {
+    color: #999;
+}
+main a {
+    color: #333;
+    text-decoration: none;
+}
+/* 导航和总体样式 */
+nav, main {
+    float: left;
     height: 100vh;
+    padding: 10px;
+}
+
+/* 导航单独样式 */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18%;
     background: #30333c;
     color: #fff;
-    padding: 15px 30px;
-    min-width: 200px;
 }
 nav h2 {
-    text-align: center;
+    border-bottom: 1px solid #ccc;
 }
 .nav-item {
-    padding-left: 25px;
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
-    text-align: left;
 }
-.nav-item a{
-    color: #6f7a84;
-    text-decoration: none;
-}
-
-/* 主内容样式 */
+/* 主题单独样式 */
 main {
-    min-height: 100vh;
-    padding: 10px 15px;
-    margin-left: 200px;
+    width: 82%;
     background: #e8e8e8;
+    overflow: auto;
 }
-
-/* 每个单独块的样式 */
 .box {
     background: #fff;
-    padding: 5px 10px 30px;
+    width: 96%;
+    margin: 5px auto;
+    padding: 10px;
     border-radius: 5px;
-    margin: 10px 0;
-    min-width: 300px;
 }
-.box h3 a{
-    width: 100%;
-    margin: 20px 0;
-}
-
-/* 每一个书签的的样式 */
-.box a {
+.box > a {
     float: left;
-    text-decoration: none;
-    color: #000;
-    margin: 5px 10px;
+    width: calc(33% - 10px);
 }
-.item:hover {
-    box-shadow: 3px 4px 5px #cacaca;
+.box > a:hover {
+    position: relative;
+    bottom: 5px;
 }
 .item {
-    width: 250px;
-    height: 100px;
-    border: 1px solid #cbcbcb;
-    border-radius: 10px; 
-    padding: 15px 25px;
-    box-shadow:1px 2px 3px #cacaca;
-    transition: all 0.2s;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 5px;
+    overflow: hidden;
 }
-.logo {
-    color: #2b2582;
-    font-weight: 900;
-    display: flex;
-    align-items: center;    
-}
-.item .logo .load {
-    width: 32px;
+.item .logo {
     height: 32px;
-    margin-right: 5px;
 }
-.desc {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    font-size: 12px;
+.item .logo span {
+    vertical-align: top;
+    line-height: 32px;
+    height: 32px;
+    padding-left: 15px;
+    color: #38bbd2; 
+}
+.item .desc {
+    text-indent: 2em;
+    height: 56px;
+    padding-top: 8px;
+    font-size: 16px;
+    color: #666;
+}
+@media screen and (max-device-width: 900px) and (min-device-width: 700px) {
+    .box > a {
+    float: left;
+    width: calc(50% - 10px);
+    }
+}
+@media screen and (max-device-width: 699px) {
+    nav {
+        width: 100%;
+        height: auto;
+    }
+    main {
+        width: 100%;
+    }
+    .box > a {
+    float: left;
+    width: calc(100% - 10px);
+    }
 }
