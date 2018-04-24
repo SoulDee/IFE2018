@@ -1,0 +1,102 @@
+/* 样式重置 */
+*{box-sizing: border-box;}
+html,body,p,h1,h2,h3 {
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.claerFix::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+.claerFix {
+    *zoom: 1;
+}
+/* 导航样式 */
+nav {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    background: #30333c;
+    color: #fff;
+    padding: 15px 30px;
+    min-width: 200px;
+}
+nav h2 {
+    text-align: center;
+}
+.nav-item {
+    padding-left: 25px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: left;
+}
+.nav-item a{
+    color: #6f7a84;
+    text-decoration: none;
+}
+
+/* 主内容样式 */
+main {
+    min-height: 100vh;
+    padding: 10px 15px;
+    margin-left: 200px;
+    background: #e8e8e8;
+}
+
+/* 每个单独块的样式 */
+.box {
+    background: #fff;
+    padding: 5px 10px 30px;
+    border-radius: 5px;
+    margin: 10px 0;
+    min-width: 300px;
+}
+.box h3 a{
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* 每一个书签的的样式 */
+.box a {
+    float: left;
+    text-decoration: none;
+    color: #000;
+    margin: 5px 10px;
+}
+.item:hover {
+    box-shadow: 3px 4px 5px #cacaca;
+}
+.item {
+    width: 250px;
+    height: 100px;
+    border: 1px solid #cbcbcb;
+    border-radius: 10px; 
+    padding: 15px 25px;
+    box-shadow:1px 2px 3px #cacaca;
+    transition: all 0.2s;
+}
+.logo {
+    color: #2b2582;
+    font-weight: 900;
+    display: flex;
+    align-items: center;    
+}
+.item .logo .load {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
+.desc {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 12px;
+}
