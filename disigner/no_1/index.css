@@ -37,6 +37,9 @@ button {
     padding: 5px;
     outline: none;
 }
+button:active {
+    background: #00f;
+}
 /* 样式切换 */
 .skin {
     width: 0;
@@ -44,12 +47,12 @@ button {
 .color-blue {
     color: #000;
 }
-.press {
+/* .press {
     animation: click 0.1s forwards;
-}
+} */
 /* 动画 */
-@keyframes click {
+/* @keyframes click {
     0% {background: #fff}
     50% {background: #00f}
     100% {background: #fff}
-}
+} */

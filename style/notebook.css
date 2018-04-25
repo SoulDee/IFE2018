@@ -5,119 +5,103 @@
 body, html {
     padding: 0;
     margin: 0;
-    overflow: auto;
-    min-width: 360px;
+    height: 100%;
+    background: #eee;
 }
 ul,li {
     list-style: none;
     padding: 0;
 }
-.clearFix::after {
-    display: block;
-    content: '';
-    height: 0;
-    clear: both;
-}
-.clearFix {
-    *zoom: 1;
-}
-nav a {
-    color: #eee;
-    text-decoration: none;
-    transition: all 0.2s linear;
-}
-nav a:hover {
-    color: #999;
-}
-main a {
-    color: #333;
-    text-decoration: none;
-}
-/* 导航和总体样式 */
-nav, main {
-    float: left;
-    height: 100vh;
-    padding: 10px;
-}
-
-/* 导航单独样式 */
-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 18%;
-    background: #30333c;
-    color: #fff;
-}
-nav h2 {
-    border-bottom: 1px solid #ccc;
-}
-.nav-item {
-    height: 40px;
-    line-height: 40px;
-}
-/* 主题单独样式 */
+/* 容器 */
 main {
-    width: 82%;
-    background: #e8e8e8;
+    height: 96%;
     overflow: auto;
 }
-.box {
-    background: #fff;
-    width: 96%;
-    margin: 5px auto;
-    padding: 10px;
-    border-radius: 5px;
-}
-.box > a {
+section {
     float: left;
-    width: calc(33% - 10px);
-}
-.box > a:hover {
-    position: relative;
-    bottom: 5px;
-}
-.item {
+    width: calc(33% - 20px);
+    background: #fff;
+    border-radius: 15px;
     border: 1px solid #ccc;
     box-shadow: 1px 2px 3px #ccc;
-    border-radius: 10px;
+    height: 100%;
+    overflow: auto;
+    margin: 10px;
     padding: 10px;
-    margin: 10px 5px;
-    overflow: hidden;
+    text-align: center;
 }
-.item .logo {
+/* 日记标题样式 */
+section li {
+    line-height: 16px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 30px;
+    transition: all 0.1s;
+}
+section li:hover {
+    text-decoration: underline;
+    color: #45b431;
+}
+
+/* 侧栏 */
+aside {
+    opacity: 0;
+}
+aside,.icon {
+    position: relative;
+    position: fixed;
+    width: 32px;
     height: 32px;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px #ccc;
+    padding: 5px;
+    transition: all 0.1s linear;
 }
-.item .logo span {
-    vertical-align: top;
-    line-height: 32px;
-    height: 32px;
-    padding-left: 15px;
-    color: #38bbd2; 
+.appear {
+    opacity: 1;
+    width: 90px;
+    height: 105px;
+    bottom: 60px;
 }
-.item .desc {
-    text-indent: 2em;
-    height: 56px;
-    padding-top: 8px;
-    font-size: 16px;
+aside a {
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    text-decoration: none;
     color: #666;
 }
-@media screen and (max-device-width: 900px) and (min-device-width: 700px) {
-    .box > a {
-    float: left;
-    width: calc(50% - 10px);
-    }
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    animation: leap 1s ease-in-out infinite;
 }
-@media screen and (max-device-width: 699px) {
-    nav {
-        width: 100%;
+.icon i {
+    display: block;
+    height: 2px;
+    width: 60%;
+    margin: 0 auto;
+    background: #000;
+}
+
+@keyframes leap {
+    10% {bottom: 30px;}
+    20% {bottom: 15px;}
+    30% {bottom: 20px;}
+    100% {bottom: 20px;}
+}
+
+/* 移动端适配 */
+@media screen and (max-device-width:700px) {
+    section {
+        width: 90%;
+        margin: 5px 5%;
         height: auto;
-    }
-    main {
-        width: 100%;
-    }
-    .box > a {
-    float: left;
-    width: calc(100% - 10px);
     }
 }
