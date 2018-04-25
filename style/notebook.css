@@ -39,7 +39,11 @@ section li {
     padding-left: 30px;
     transition: all 0.1s;
 }
-section li:hover {
+section li a {
+    color: #666;
+    text-decoration: none;
+}
+section li a:hover {
     text-decoration: underline;
     color: #45b431;
 }
