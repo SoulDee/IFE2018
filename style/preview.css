@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+ul,li {
+    list-style: none;
+    padding: 0;
+}
+.clearFix::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+.clearFix {
+    *zoom: 1;
+}
+nav a {
+    color: #eee;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
+nav a:hover {
+    color: #999;
+}
+main a {
+    color: #333;
+    text-decoration: none;
+}
+/* 导航和总体样式 */
+nav, main {
+    float: left;
+    height: 100vh;
+    padding: 10px;
+}
+
+/* 导航单独样式 */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18%;
+    background: #30333c;
+    color: #fff;
+}
+nav h2 {
+    border-bottom: 1px solid #ccc;
+}
+.navitem {
+    height: 40px;
+    line-height: 40px;
+}
+/* 主题单独样式 */
+main {
+    width: 82%;
+    background: #e8e8e8;
+    overflow: auto;
+}
+.box {
+    background: #fff;
+    width: 96%;
+    margin: 5px auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+.box > a {
+    float: left;
+    width: 30%;
+}
+.box > a:hover {
+    position: relative;
+    bottom: 5px;
+}
+.item {
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 5px;
+    overflow: hidden;
+}
+.item .logo {
+    height: 32px;
+}
+.item .logo span {
+    vertical-align: top;
+    line-height: 32px;
+    height: 32px;
+    padding-left: 15px;
+    color: #38bbd2; 
+}
+.item .desc {
+    text-indent: 2em;
+    height: 56px;
+    padding-top: 8px;
+    font-size: 16px;
+    color: #666;
+}
+@media screen and (max-device-width: 900px) and (min-device-width: 700px) {
+    .box > a {
+        width: calc(50% - 10px);
+    }
+    .item {
+        width: 
+    }
+}
+@media screen and (max-device-width: 699px) {
+    nav {
+        width: 100%;
+        height: auto;
+    }
+    main {
+        width: 100%;
+    }
+    .box > a {
+        width: 100%;
+    }
+} 
