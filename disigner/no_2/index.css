@@ -1,0 +1,45 @@
+/* 样式重置 */
+body,html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-size: 12px;
+}
+
+
+.wrap {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px #ccc;
+    padding: 50px;
+}
+.wrap div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 68px;
+    width: 60px;
+    background: #f7f6f6;
+    border: 2px solid #ebebeb;
+    box-sizing: border-box;
+    margin-right: 25px;
+}
+.wrap div:nth-child(2) {
+    transform: skew(30deg,0);
+}
+.wrap div:nth-child(3) {
+    transform: scale(0.5,1);
+}
+.wrap div:nth-child(4) {
+    transform: rotate(45deg);
+}
+.wrap div:nth-child(5) {
+    transform: translate(10px,20px);
+}
+.wrap div:nth-child(6) {
+    transform: skew(30deg,0) scale(0.5,1) rotate(45deg) translate(10px,20px);
+}
