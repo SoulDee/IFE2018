@@ -41,5 +41,6 @@ body,html {
     transform: translate(10px,20px);
 }
 .wrap div:nth-child(6) {
-    transform: skew(30deg,0) scale(0.5,1) rotate(45deg) translate(10px,20px);
+    transform:skew(30deg)  scale(1,2) rotate(55deg) translate(30px,15px);
 }
+/* translate(10px,20px) scale(0.5,1)  rotate(45deg) skew(30deg,0) */
