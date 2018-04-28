@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+
+.title {
+    float: left;
+    width: 15%;
+    height: 1006px;
+    background: #2383d1;
+    text-align: center;
+    padding: 10px;
+}
+
+.content {
+    float: right;
+    width: 85%;
+    padding: 10px;
+}
+.content section {
+    padding: 10px;
+}
