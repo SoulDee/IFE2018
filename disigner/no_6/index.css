@@ -48,8 +48,8 @@ ul li {
     position: relative;
     display: inline-block;
     margin: 0 10px;
-    width: 320px;
-    height: 200px;
+    width: 160px;
+    height: 100px;
 }
 ul li img {
     width: 100%;
@@ -62,8 +62,8 @@ ul li:after {
     position: absolute;
     top: 0;
     right: 0;
-    width: 320px;
-    height: 200px;
+    width: 160px;
+    height: 100px;
     background: rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
