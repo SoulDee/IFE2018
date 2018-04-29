@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+body,html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+ul,li {
+    list-style: none;
+    padding: 0;
+}
+
+/* 容器 */
+.wrap {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    background: #000;
+    font-size: 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.wrap > img {
+    position: absolute;
+    width: 100%;
+}
+
+/* 显示 */
+.wrap .show-mid {
+    z-index: 50;
+}
+.wrap .show {
+    z-index: 100;
+}
+
+/* 缩略图预览 */
+ul {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+ul li {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    width: 320px;
+    height: 200px;
+}
+ul li img {
+    width: 100%;
+}
+
+/* 遮罩 */
+ul li:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+ul li:hover:after {
+    background: rgba(0, 0, 0, 0);
+}
+
+/* 图片动画 */
+@keyframes left-in {
+    0% {left: 100%;}
+    100% {left: 0;}
+}
+@keyframes bottom-in {
+    0% {top: 100%;}
+    100% {top: 0;}
+}
+@keyframes amplifier {
+    0% {transform: scale(0.1);}
+    100% {transform: scale(1);}
+}
+@keyframes shrink {
+    0% {transform: scale(2);}
+    100% {transform: scale(1);}
+}
+@keyframes rotate-amplifier {
+    0% {transform: scale(0.1) rotate(-360deg);}
+    100% {transform: scale(1) rotate(0deg);}
+}
