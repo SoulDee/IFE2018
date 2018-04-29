@@ -2,6 +2,7 @@ body,html {
     margin: 0;
     padding: 0;
     height: 100%;
+    perspective: 1500px;
 }
 
 .wrap {
@@ -12,7 +13,7 @@ body,html {
     transform: translate(-50%,-50%);
     width: 250px;
     height: 350px;
-    transition: all 0.3s linear;
+    transition: all 0.5s linear;
     transform-style: preserve-3d;
 }
 
