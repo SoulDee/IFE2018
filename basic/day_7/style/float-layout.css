@@ -1,0 +1,71 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+/* 全局样式 */
+.box {
+    height: 200px;
+    margin: 30px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+h3 {
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+}
+.left,.right,.mid {
+    float: left;
+    height: 100%;
+}
+.left {
+    background: red;
+}
+.right {
+    background: blue;
+}
+.mid {
+    background: green;
+}
+
+/* 两栏布局，左侧占30%宽度，右侧占70%宽度 */
+.box1 .left {
+    width: 30%;
+}
+.box1 .right {
+    width: 70%;
+}
+/* 两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化 */
+.box2 .left {
+    width: 100px;
+}
+.box2 .right {
+    width: calc(100% - 100px);
+}
+/* 两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+.box3 .left {
+    width: calc(100% - 100px);
+}
+.box3 .right {
+    width: 100px;
+}
+/* 三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应变化 */
+.box4 .left {
+    width: 100px;
+}
+.box4 .mid {
+    width: calc(100% - 200px);
+}
+.box4 .right {
+    width: 100px;
+}
+/* 三栏布局，左侧固定宽度，中间固定宽度，右侧根据浏览器宽度变化而自适应变化 */
+.box5 .left {
+    width: 100px;
+}
+.box5 .mid {
+    width: 100px;
+}
+.box5 .right {
+    width: calc(100% - 200px);
+}

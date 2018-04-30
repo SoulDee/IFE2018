@@ -1,0 +1,146 @@
+/* 样式重置 */
+* {
+    box-sizing: border-box;
+}
+body,html {
+    margin: 0;
+    padding: 0;
+}
+
+/* 全局样式 */
+ul,li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+    color: #fff;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* 头部样式 */
+header {
+    background: #333333;
+    height: 60px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    margin: 0 auto;
+    height: 60px;
+    color: #fff;
+}
+.header span {
+    font-size: 25px;
+    align-self: center;
+}
+.header nav ul {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+}
+
+
+/* 中间banner样式 */
+.contain {
+    flex: 1;
+}
+.banner {
+    position: relative;
+    height: 350px;
+    background: #37cf51;
+}
+.banner ul {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 120px;
+    justify-content: space-around;
+    align-items: flex-end;
+    display: flex;
+}
+.banner ul li {
+    position: relative;
+    width: 20px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #fff;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.banner input,.main input {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+.banner ul li:nth-child(1) {
+    background: #fff;
+    color: #000;
+    height: 40px;
+}
+/* 中间导航样式 */
+.main nav {
+    position: relative;
+    height: 100px;
+    border-bottom: 1px solid #ccc;
+}
+.main nav ul {
+    position: absolute;
+    left: 150px;
+    bottom: -1px;
+    display: flex;
+}
+.main nav ul li {
+    position: relative;
+    height: 45px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #ccc;
+}
+.main nav ul li:nth-child(1) {
+    border-bottom: 1px solid #fff;
+    background: #fff;
+}
+/* 中间内容样式 */
+.main .content {
+    width: 960px;
+    margin: 0 auto;
+}
+.home {
+    padding: 15px 0;
+}
+.row {
+    display: flex;
+}
+.col {
+    border: 1px solid #c9c9c9;
+    padding: 80px;
+    text-align: center;
+    flex: 1;
+    margin: 5px 5px 5px 0;
+}
+/* 尾部样式 */
+footer {
+    background: #666666;
+    text-align: center;
+    height: 100px;
+    color: #fff;
+    padding-top: 10px;
+}

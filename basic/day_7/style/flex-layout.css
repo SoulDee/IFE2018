@@ -1,0 +1,63 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+/* 全局样式 */
+.box {
+    display: flex;
+    position: relative;
+    height: 200px;
+    margin: 30px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+h3 {
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+}
+.left {
+    background: red;
+}
+.right {
+    background: blue;
+}
+.mid {
+    background: green;
+}
+
+/* 两栏布局，左侧占30%宽度，右侧占70%宽度 */
+.box1 .left {
+    flex: 0 0 30%;
+}
+.box1 .right {
+    flex: 0 0 70%;
+}
+/* 两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化 */
+.box2 .left {
+    flex: 0 0 200px;
+}
+.box2 .right {
+    flex: 1;
+}
+/* 两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化 */
+.box3 .left {
+    flex: 1;
+}
+.box3 .right {
+    flex: 0 0 200px;
+}
+/* 三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应变化 */
+.box4 .left,.box4 .right {
+    flex: 0 0 200px;
+}
+.box4 .mid {
+    flex: 1;
+}
+/* 三栏布局，左侧固定宽度，中间固定宽度，右侧根据浏览器宽度变化而自适应变化 */
+.box5 .left,.box5 .mid {
+    flex: 0 0 200px;
+}
+.box5 .right {
+    flex: 1;
+}
