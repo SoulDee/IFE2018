@@ -1,0 +1,479 @@
+/* 样式重置 */
+body,html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0 auto;
+    width: 1600px;
+    height: 6274px;
+}
+* {
+    box-sizing: border-box;
+}
+ul,li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+}
+h2 {
+    font-size: 42px;
+    line-height: 52px;
+}
+p {
+    font-size: 18px;
+    line-height: 28px;
+}
+/* 清除浮动 */
+.clearfix::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+ /* 遮罩 */
+.shade {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
+/* 顶部描述以及登录 */
+header {
+    letter-spacing: 0.08em; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(img/banner1-bg.png);
+    height: 990px;
+    width: 1600px;
+    color: #fff;
+    text-align: center;
+}
+header .shade {
+    padding: 0 315px;
+}
+header h1 {
+    font-size: 62px;
+    padding-top: 209px;
+    font-weight: 100;
+}
+header > p {
+    padding: 88px 5px 0;
+    width: 790px;
+    font-size: 20px;
+    line-height: 32px;
+    color: #aeaeac;
+}
+    /* 登录框 */
+.register {
+    position: absolute;
+    bottom: 210px;
+    width: 971px;
+    height: 250px;
+    border: 1px solid #525151;
+}
+.register h2 {
+    font-size: 16px;
+    line-height: 28px;
+    text-transform: uppercase;
+    padding-top: 61px;
+}
+.register em {
+    text-transform: uppercase;
+    padding-top: 20px;
+    font-style: normal;
+    color: #aeaeac;
+    font-size: 12px;
+}
+
+.input-row {
+    margin-top: 45px;
+}
+.input-row input:nth-child(1),.input-row input:nth-child(2){
+    width: 292px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    padding-left: 46px;
+}
+.input-row input:nth-child(1)::-webkit-input-placeholder {
+    color: #fff;
+}
+.input-row input:nth-child(2) {
+    margin: 0 30px;
+}
+.input-row input:nth-child(3) {
+    width: 125px;
+    height: 50px;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 22px;
+}
+/* 页面描述 */
+.description {
+    height: 710px;
+    text-align: center;
+}
+.description em{
+    margin: 88px 0 0;
+    display: block;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 28px;
+    text-transform: uppercase;
+}
+.description h2 {
+    width: 692px;
+    margin: 30px auto 0;
+    font-weight: 10;
+}
+
+.des-box {
+    margin: 78px auto 0;
+    width: 1050px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.des-box .des-item {
+    display: flex;
+    flex: 0 0 450px;
+    width: 50%;
+    align-items: flex-start;
+    margin-bottom: 70px;
+}
+.des-item img {
+    width: 40px;
+    height: auto;
+}
+.des-box .des-item:nth-child(1) img {
+    padding: 8px;
+}
+.des-item section {
+    margin-left: 1em;
+    flex: 1;
+    text-align: left;
+}
+.des-item section h3 {
+    font-size: 20px;
+    line-height: 32px;
+}
+.des-item section p {
+    margin-top: 22px;
+    color: #b1b0b0;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+/* 横幅内容 */
+.banner {
+    position: relative;
+    background: url(img/banner2-bg.png);
+    color: #fff;
+    height: 799px;
+}
+.banner .shade {
+    padding: 180px 0 180px 315px;
+}
+.banner h2 {
+    width: 430px;
+}
+.banner p {
+    width: 460px;
+    color: #aeaeac;
+    margin-top: 35px;
+}
+
+.banner .btn-row {
+    margin-top: 60px;
+}
+.banner .btn-row button {
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 240px;
+    height: 60px;
+    border-radius: 3px;
+    border: 1px solid #b6b6b6;
+    cursor: pointer;
+}
+.banner .btn-row button:nth-child(1) {
+    background: #fff;
+}
+.banner .btn-row button:nth-child(2) {
+    margin-left: 30px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+}
+
+.pre-box {
+    height: 600px;
+    width: 646px;
+    border: 1px solid #aeaeac;
+    border-right: none;
+    border-radius: 35px 0 0 35px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.pre-box i {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-left: -5px;
+    left: 30px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #aeaeac;
+    border-radius: 50%;
+}
+.pre-box img {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.pre-box i + img {
+    right: 50%;
+    z-index: 10;
+    opacity: 0;
+}
+
+/* 页面主要内容 */
+.contain {
+    height: 3366px;
+    text-align: center;
+}
+.contain > section {
+    padding: 0 315px 0;
+    border-bottom: 1px solid #aeaeac;
+}
+
+/* 主要内容第一部分 */
+.contain > section:nth-child(1) {
+    padding-top: 96px;
+    height: 580px;
+}
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.wrap section {
+    padding: 0 10px;
+}
+.wrap section p {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #353535;
+}
+
+/* 主要内容第二部分 */
+.contain > section:nth-child(2) {
+    padding-top: 114px;
+    height: 1000px;
+}
+.article {
+    display: flex;
+    margin-bottom: 80px;
+}
+.article img {
+    width: 570px;
+    height: 350px;
+}
+.article section {
+    flex: 1;
+    padding: 78px 0 0 80px;
+    text-align: left;
+    letter-spacing: 0;
+}
+.article section h3 {
+    font-size: 20px;
+    line-height: 32px;
+}
+.article section p {
+    font-size: 16px;
+    line-height: 28px;
+    margin-top: 26px;
+}
+.article:nth-child(2) section {
+    padding: 78px 70px 0 0;
+}
+
+/* 主要内容第三部分 */
+.contain > section:nth-child(3) {
+    padding-top: 100px;
+    height: 1084px;
+}
+.contain > section:nth-child(3) > p {
+    color: #868686;
+    margin-top: 30px;
+}
+.team {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.member {
+    position: relative;
+    height: 340px;
+    flex: 0 0 470px;
+    margin-top: 30px;
+    color: #fff;
+}
+.member:nth-child(1) {
+    background: url(img/team-1.png);
+}
+.member:nth-child(2) {
+    background: url(img/team-2.png);
+}
+.member:nth-child(3) {
+    background: url(img/team-3.png);
+}
+.member:nth-child(4) {
+    background: url(img/team-4.png);
+}
+.member .shade {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+.member .shade:hover {
+    opacity: 1;
+}
+.member .shade h3 {
+    font-size: 20px;
+    line-height: 32px;
+}
+.member .shade em {
+    font-style: normal;
+    color: #aeaeac;
+    font-size: 12px;
+    line-height: 28px;
+}
+.info-list {
+    font-size: 0;
+}
+.info-list img {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border: 1px solid #aeaeac;
+    border-radius: 50%;
+    padding: 20px;
+    margin: 15px;
+    cursor: pointer;
+}
+/* 主要内容第四部分 */
+.suggest {
+    margin-top: 72px;
+    display: flex;
+    height: 702px;
+}
+.message-box {
+    border: 1px solid #aeaeac;
+    border-radius: 10px;
+    height: 560px;
+    flex: 0 0 470px;
+    padding: 0 50px;
+}
+.message-box h3 {
+    margin: 45px 0;
+}
+.message-box input {
+    width: 370px;
+    height: 50px;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+.message-box textarea  {
+    width: 370px;
+    height: 142px;
+    padding: 20px;
+    resize: none;
+    margin-bottom: 30px;
+}
+.message-box input[type^="submit"] {
+    background: #141414;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.contacts {
+    margin-left: 130px;
+    text-align: left;
+}
+.contacts h2 {
+    margin-top: 85px;
+}
+.contacts p {
+    margin-top: 38px;
+    color: #aeaeac;
+}
+.contacts .info {
+    margin-top: 70px;
+}
+.contacts .info img {
+    flex: 0 0 32px;
+    height: auto;
+    margin-right: 1em;
+}
+.contacts .info li {
+    margin-bottom: 34px;
+    display: flex;
+}
+.contacts .info section {
+    line-height: 26px;
+    font-size: 16px;
+} 
+
+/* 相关链接 */
+footer {
+    height: 411px;
+    padding: 88px 210px 0;
+    display: flex;
+    background: #141414;
+    color: #fff;
+}
+footer a {
+    color: #494949;
+}
+footer section {
+    flex: 0 0 300px;
+}
+footer section li {
+    margin-top: 30px;
+}
+footer section:nth-child(4) {
+    flex: 0 0 265px;
+}
+footer section:nth-child(4) p {
+    padding-top: 24px;
+    color: #aeaeac;
+    font-size: 18px;
+    line-height: 28px;
+}
+footer section:nth-child(4) .info {
+    margin-top: 40px;
+}
+footer section:nth-child(4) .info img {
+    margin-right: 24px;
+}
