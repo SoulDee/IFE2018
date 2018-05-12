@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>使用 animate.css 制作流畅交互动效</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="site-container">
+        <section class="card">
+            <h3>Login</h3>
+            <form>
+                <div class="form__wrapper" data-wow-delay="0.5s">
+                    <input type="email" class="form__input" id="email" name="email">
+                    <label class="form__label" for="email">
+                        <span class="form__label__content">Email</span>
+                    </label>
+                </div>
+                <div class="form__wrapper" data-wow-delay="0.6s">
+                    <input type="password" class="form__input" id="password" name="password">
+                    <label class="form__label" for="password">
+                        <span class="form__label__content">Password</span>
+                    </label>
+                </div>
+                <div class="form__wrapper__submit pulse infinite" data-wow-delay="0.7s">
+                    <div class="form__input__submit">
+                        <button type="submit" name="submit" class="btn">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </section>
+</body>
+<script src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/jquery/jquery-1.10.2.min_65682a2.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        $("#email")
+            // 聚焦事件，span上移
+            .focus(function(){
+            $("#email + label span").css({ "marginTop": "-15px", "fontSize": "90%" });
+        })  // 失焦事件，检查是否有内容，没有的话span归位，同时检查是否满足两个都填了内容，有的话触发按钮动画
+            .blur(function(){
+                if ($("#email").val() === '') {
+                    $("#email + label span").css({"marginTop": "0px","fontSize": "100%"});
+                }
+                if ($("#email").val() !== '' && $("#password").val() !== '') {
+                    $(".btn").addClass("animated rubberBand");
+                }
+            });
+
+        $("#password")
+            .focus(function () {
+                $("#password + label span").css({ "marginTop": "-15px", "fontSize": "90%" });
+            })
+            .blur(function () {
+                if ($("#password").val() === '' ) {
+                    $("#password + label span").css({ "marginTop": "0px", "fontSize": "100%" });
+                }
+                if ($("#email").val() !== '' && $("#password").val() !== '') {
+                    $(".btn").addClass("animated rubberBand");
+                }
+            });
+    })
+</script>
+</html>
