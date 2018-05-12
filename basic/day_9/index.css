@@ -6,7 +6,6 @@ body,html {
 body {
     margin: 0 auto;
     width: 1600px;
-    height: 6274px;
 }
 * {
     box-sizing: border-box;
@@ -126,7 +125,6 @@ header > p {
 }
 /* 页面描述 */
 .description {
-    height: 710px;
     text-align: center;
 }
 .description em{
@@ -256,18 +254,17 @@ header > p {
 
 /* 页面主要内容 */
 .contain {
-    height: 3366px;
+    padding-bottom: 60px;
     text-align: center;
 }
 .contain > section {
-    padding: 0 315px 0;
+    padding: 0 315px 60px;
     border-bottom: 1px solid #aeaeac;
 }
 
 /* 主要内容第一部分 */
 .contain > section:nth-child(1) {
     padding-top: 96px;
-    height: 580px;
 }
 .wrap {
     display: flex;
@@ -286,7 +283,6 @@ header > p {
 /* 主要内容第二部分 */
 .contain > section:nth-child(2) {
     padding-top: 114px;
-    height: 1000px;
 }
 .article {
     display: flex;
@@ -318,7 +314,6 @@ header > p {
 /* 主要内容第三部分 */
 .contain > section:nth-child(3) {
     padding-top: 100px;
-    height: 1084px;
 }
 .contain > section:nth-child(3) > p {
     color: #868686;
@@ -383,10 +378,10 @@ header > p {
     cursor: pointer;
 }
 /* 主要内容第四部分 */
-.suggest {
+.contain .suggest {
     margin-top: 72px;
     display: flex;
-    height: 702px;
+    border-bottom: none;
 }
 .message-box {
     border: 1px solid #aeaeac;
@@ -432,13 +427,16 @@ header > p {
     margin-top: 70px;
 }
 .contacts .info img {
-    flex: 0 0 32px;
-    height: auto;
+    flex: 0 0 28px;
     margin-right: 1em;
 }
 .contacts .info li {
     margin-bottom: 34px;
     display: flex;
+}
+.contacts .info li img:nth-child(1) {
+    width: 32px;
+    height: auto;
 }
 .contacts .info section {
     line-height: 26px;
@@ -447,8 +445,7 @@ header > p {
 
 /* 相关链接 */
 footer {
-    height: 411px;
-    padding: 88px 210px 0;
+    padding: 88px 210px 60px;
     display: flex;
     background: #141414;
     color: #fff;
