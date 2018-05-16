@@ -1,0 +1,121 @@
+/* 样式重置 */
+* {
+    box-sizing: border-box;
+}
+body,html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+    min-height: 100vh;
+}
+ul,li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.clearFix::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+.clearFix {
+    *zoom: 1;
+}
+button {
+    border: 1px solid #50a8f0;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+/* 基本信息 */
+.info {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #232222;
+    color: #ccc;
+    width: 30%;
+    min-height: 600px;
+}
+.info h2 {
+    text-shadow: 0 0 3px #6b52fa;
+}
+.info > img {
+    border-radius: 50%;
+}
+.info .declaration {
+    color: #aaa;
+    font-family: 'Times New Roman', Times, serif;
+}
+.info strong {
+    padding-top: 15px;
+}
+
+.message {
+    padding-top: 30px;
+}
+.message li {
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+}
+.message li a {
+    text-decoration: none;
+    color: aquamarine;
+}
+.message li a:hover {
+    text-decoration: underline;
+}
+/* 作品样式 */
+.content {
+    float: left;
+    width: 70%;
+    height: 100%;
+    background: #f5f5f5;
+    padding: 20px 30px;
+}
+.works .works-item {
+    float: left;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px #ccc;
+    width: 24%;
+    margin-right: 1%;
+    margin-top: 5px;
+    height: 200px;
+}
+/* 技能样式 */
+.skill {
+    padding: 30px 15px 0 15px;
+}
+.skill-item {
+    height: 80px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    box-shadow: 1px 2px 3px #ccc;
+}
+
+/* 媒体查询 */
+@media screen and (max-device-width: 900px) {
+    .info {
+        width: 100%;
+    }
+    .content {
+        width: 100%;
+    }
+}
+@media screen and (max-device-width: 700px) {
+    .content {
+        height: auto;
+    }
+    .works .works-item {
+        width: 49%;
+    }
+}
+@media screen and (max-device-width: 360px) {
+    .works .works-item {
+        width: 99%;
+    }
+}

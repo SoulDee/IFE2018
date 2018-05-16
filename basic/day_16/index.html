@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础学院-第三天</title>
+    <link rel="stylesheet" href="day_3.css">
+</head>
+<body>
+    <!-- 个人信息栏 + 联系方式 -->
+    <section class="info">
+        <img src="phpto.jpg" alt="头像">
+        <h2>吴锦志</h2>
+        <span class="declaration">It's fun to knock code.</span>
+        <strong>求职意向：前端工程师</strong>
+        <ul class="message">
+            <li>性&nbsp;&nbsp;&nbsp;&nbsp;别：男</li>
+            <li>电&nbsp;&nbsp;&nbsp;&nbsp;话：177********</li>
+            <li title="点击发送邮件给我">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：<a href="#">177********@163.com</a>
+            </li>
+            <li title="点击查看我的GitHub">github：
+                <a href="#">SoulDee</a>
+            </li>
+            <li>学&nbsp;&nbsp;&nbsp;&nbsp;历：本科</li>
+            <li>学&nbsp;&nbsp;&nbsp;&nbsp;校：史莱克学院</li>
+            <li>专&nbsp;&nbsp;&nbsp;&nbsp;业：xxxxxx专业</li>
+        </ul>
+    </section>
+    <!-- 主要内容栏 -->
+    <section class="content">
+        <!-- 作品 -->
+        <section class="works clearFix">
+            <section class="works-item">
+                <button>作品预览</button>
+            </section>
+            <section class="works-item">
+                <button>作品预览</button>
+            </section>
+            <section class="works-item">
+                <button>作品预览</button>
+            </section>
+            <section class="works-item">
+                <button>作品预览</button>
+            </section>
+        </section>
+        <!-- 技能与个人描述 -->
+        <section class="skill">
+            <section class="skill-item">
+                <button>技能详情</button>
+            </section>
+            <section class="skill-item">
+                <button>技能详情</button>
+            </section>
+            <section class="skill-item">
+                <button>技能详情</button>
+            </section>
+            <section class="skill-item">自我推销介绍</section>
+        </section>
+    </section>
+<script>
+    var worksBtn = document.querySelectorAll(".works-item button");
+    var skillBtn = document.querySelectorAll(".skill-item button");
+    
+    for (let index = 0; index < worksBtn.length; index++) {
+         worksBtn[index].addEventListener("click", function () {
+            alert("暂时没有什么大的作品哦");
+        }, false);
+    }
+    
+    for (let index = 0; index < worksBtn.length; index++) {
+            skillBtn[index].addEventListener("click", function () {
+                alert("还没有想好怎么描述自己的技能");
+            }, false);
+        }
+</script>
+</body>
+</html>
