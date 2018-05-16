@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <h1>请打开开发者工具查看结果</h1>
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li>
+                        <span>HTML</span>
+                        <a href="">Some Link1</a>
+                    </li>
+                    <li>
+                        <span>JS</span>
+                        <a class="active" href="">Some Link2</a>
+                    </li>
+                    <li>
+                        <span>CSS</span>
+                        <a href="">Some Link3</a>
+                    </li>
+                    <li>
+                        <span>JS</span>
+                        <a href="">Some Link4</a>
+                    </li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li>
+                        <span>HTML</span>
+                        <a href="">Some Link1</a>
+                    </li>
+                    <li>
+                        <span>HTML</span>
+                        <a href="">Some Link2</a>
+                    </li>
+                    <li>
+                        <span>JS</span>
+                        <a class="active" href="#">Some Link3</a>
+                    </li>
+                    <li>
+                        <span>CSS</span>
+                        <a href="">Some Link4</a>
+                    </li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+    </div>
+    <script>
+
+        function getAllListItem() {
+            // 返回页面中所有li标签
+            return document.querySelectorAll("li");
+        }
+
+        function findAllHtmlSpanInOneSection(sectionId) {
+            // 返回某个section下所有span中内容为HTML的span标签
+            let arr = document.getElementById(sectionId).querySelectorAll("span");
+            let newArr = [];
+            for (let index = 0; index < arr.length; index++) {
+                if (arr[index].innerText === "HTML") {
+                    newArr.push(arr[index]);
+                }
+            }
+            return newArr;
+        }
+
+        function findListItem(sectionId, spanCont) {
+            // 返回某个section下，所有所包含span内容为spanCont的LI标签
+            let arr = document.getElementById(sectionId).querySelectorAll("span");
+            let newArr = [];
+            for (let index = 0; index < arr.length; index++) {
+                if (arr[index].innerText === spanCont) {
+                    newArr.push(arr[index]);
+                }
+            }
+            return newArr;
+        }
+
+        function getActiveLinkContent(sectionId) {
+            // 返回某个section下，class为active的链接中包含的文字内容
+            return document.getElementById(sectionId).querySelector(`*[class^="active"]`);
+        }
+        
+        // 运行方法，获得元素
+        var list1 = getAllListItem();
+        var list2 = findAllHtmlSpanInOneSection("news-normal");
+        var list3 = findListItem("news-normal", "CSS");
+        var list4 = getActiveLinkContent("news-normal").innerText;
+
+        // 输出查看
+        console.log(list1);
+        console.log(list2);
+        console.log(list3);
+        console.log(list4);
+    </script>
+</body>
+
+</html>
