@@ -34,6 +34,7 @@
 
         let aSmile = setInterval(smile, 60);
         
+        // 动画实现
         function smile() {
             if (distanceTop <= -7680) {
                 distanceTop = 0;
@@ -44,9 +45,13 @@
         }
 
         run.addEventListener("click", function () {
-            aSmile = setInterval(smile, 60);
+            if (aSmile) {
+                // 检查是否已经存在定时器，是的话先清除
+                clearInterval(aSmile);
+                aSmile = setInterval(smile, 60);
+            }
         },false);
-
+        
         stop.addEventListener("click", function () {
             clearInterval(aSmile);
         },false);
