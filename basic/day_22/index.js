@@ -1,9 +1,9 @@
-let queue = ["apple", "pear", "aa"];
+let queue = ["apple", "pear"];
 let queueCont = document.getElementById("queue-cont");
 let queueInput = document.getElementById("queue-input");
 let btnList = document.getElementById("btn-list");
 
-let stack = ["apple", "pear", "bb"];
+let stack = ["apple", "pear"];
 let stackCont = document.getElementById("stack-cont");
 let stackInput = document.getElementById("stack-input");
 let btn2List = document.getElementById("btn2-list");
@@ -31,8 +31,8 @@ let EventUtil = {
 // 队列与栈的更新
 function updata() {
     let queueStr = queue.join(" &lt- ");
-    let stackStr = stack.join(" -&gt");
-    queueCont.innerHTML = "队列内容:" + queueStr;
+    let stackStr = stack.join(" -&gt ");
+    queueCont.innerHTML = "队列内容：" + queueStr;
     stackCont.innerHTML = "栈内容：" + stackStr;
 }
 
