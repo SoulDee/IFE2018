@@ -31,16 +31,18 @@
         let run = document.getElementById("run");
         let stop = document.getElementById("stop");
         let distanceTop = 0;
-
+        let imgH = 480;
         let aSmile = setInterval(smile, 60);
-        
+
         // 动画实现
         function smile() {
             if (distanceTop <= -7680) {
-                distanceTop = 0;
-            } else{
-                distanceTop -= 480;
-            }
+                imgH = -imgH;
+            } else if (distanceTop >= 0) {
+                imgH = -imgH;
+            } 
+
+            distanceTop += imgH;
             headPic.style.top = `${distanceTop}px`;
         }
 
