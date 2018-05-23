@@ -100,19 +100,22 @@ function turnRight() {
     turnLeft();
 }
 // 测试用例
-// goSteps(10); // Go 10次
-// goSteps(1); // Go 1次
-// goSteps(); // Go 1次，认为缺少参数时，默认参数为1
-// goSteps(0);  // 0次
-// goSteps(-1);  // 0次
-// goSteps(1.4);  // Go 1次
-// goSteps(1.6);  // Go 1次
-// goSteps(-1);  // 0次
-// goSteps(true);  // Go 1次
-// goSteps(false);  // 0次
-// goSteps("Test");  // 0次
-// goSteps(NaN);  // 0次
-// goSteps(null);  // 0次
+function testItem() {
+    goSteps(10); // Go 10次
+    goSteps(1); // Go 1次
+    goSteps(); // Go 1次，认为缺少参数时，默认参数为1
+    goSteps(0);  // 0次
+    goSteps(-1);  // 0次
+    goSteps(1.4);  // Go 1次
+    goSteps(1.6);  // Go 1次
+    goSteps(-1);  // 0次
+    goSteps(true);  // Go 1次
+    goSteps(false);  // 0次
+    goSteps("Test");  // 0次
+    goSteps(NaN);  // 0次
+    goSteps(null);  // 0次
+}
+testItem();
 //  ------------------------------- 这里是任务二 ---------------------------------------------
 
 
