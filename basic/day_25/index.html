@@ -12,12 +12,63 @@
 
 <body>
     <!-- 任务一：小小机器人 -->
-    <button id="btn1">RUN</button>
+    <button id="btn1">test1-RUN</button>
     <section id="test1">
-        <div class="box" style="margin-top: 150px;
-    margin-left: 150px;">
+        这是一个失败的尝试，本来想将这个题目做成可视化的，但是发现一些地方的问题并没想到解决的办法...悲伤，待填坑，原本的题目答案请打开调试工具查看
+        <div class="box" style="margin-top: 50px;
+    margin-left: 50px;">
             <div class="head"></div>
         </div>
+    </section>
+
+    <section id="test2"></section>
+    <section id="test3"></section>
+
+    <section id="test4">
+        <select id="year-select">
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            ……
+            <option value="2032">2002</option>
+        </select>
+        
+        <select id="month-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            ……
+            <option value="12">12</option>
+        </select>
+        
+        <select id="day-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            ……
+            <option value="31">31</option>
+        </select>
+        
+        <select id="hour-select">
+            <option value="0">00</option>
+            <option value="1">01</option>
+            ……
+            <option value="23">23</option>
+        </select>
+        
+        <select id="minite-select">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            ……
+            <option>59</option>
+        </select>
+        
+        <select id="second-select">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            ……
+            <option>59</option>
+        </select>
+        
+        <p id="result-wrapper">现在距离<br> 2001年1月1日星期X HH:MM:SS <br>还有<br> X 天 X 小时 X 分 X 秒</p>
     </section>
 
     <script src="index.js"></script>
