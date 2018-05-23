@@ -169,7 +169,7 @@ EventUtil.addHandler(testBox, "change", function (event) {
             choiceYear = option;
             break;
         case 'month-select':
-            choiceMonth = option;
+            choiceMonth = option-1;
             break;
         case 'day-select':
             choiceDate = option;
@@ -189,7 +189,7 @@ EventUtil.addHandler(testBox, "change", function (event) {
     getDay(choiceMonth);
     console.log();
     
-    t.innerText = ` ${choiceYear}年${choiceMonth}月${choiceDate}日 ${plus0(choiceHours)}:${plus0(choiceMinutes)}:${plus0(choiceSeconds)} `;
+    t.innerText = ` ${choiceYear}年${choiceMonth+1}月${choiceDate}日 ${plus0(choiceHours)}:${plus0(choiceMinutes)}:${plus0(choiceSeconds)} `;
 });
 // 当更改月份的时候判断天数
 EventUtil.addHandler(monthSelect, "change", function(){
@@ -252,7 +252,7 @@ function createDay(n) {
 }
 // 获得不同月数的不同天数
 function getDay(n) {
-    let aNum = parseInt(n)-1;
+    let aNum = parseInt(n);
     let num = 0;
     switch (aNum) {
         case 1:
