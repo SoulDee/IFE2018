@@ -40,3 +40,10 @@ section {
 #test4 {
     height: 300px;
 }
+
+#result-wrapper span{
+    display: block;
+}
+#result-wrapper span:nth-child(1), #result-wrapper span:nth-child(3){
+    text-align: left;
+}
