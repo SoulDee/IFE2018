@@ -147,10 +147,10 @@ let t3 = setInterval("isTime3();", 1000);
 let testBox = document.getElementById("test4");
 let yearSelect = document.getElementById("year-select");
 let monthSelect = document.getElementById("month-select");
-let choiceTime = new Date(2000, 0, 0, 0, 0, 0);
+let choiceTime = new Date(1970, 0, 0, 0, 0, 0);
 
-let choiceYear = 2000;
-let choiceMonth = 1;
+let choiceYear = 1970;
+let choiceMonth = 0;
 let choiceDate = 1;
 let choiceHours = 0;
 let choiceMinutes = 0;
