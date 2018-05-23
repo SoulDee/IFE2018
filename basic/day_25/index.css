@@ -1,49 +1,41 @@
 body,html {
+    position: relative;
     margin: 0;
     padding: 0;
 }
+body {
+    padding: 15px;
+}
+* {box-sizing: border-box;}
+.box {
+    position: absolute;
+    border-top: 8px solid #218fbb;
+    height: 30px;
+    width: 30px;
+    background: #033f3a;
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+}
 
 section {
-    width: 300px;
-    height: 300px;
-    border: 1px solid #000;
-    margin: 15px auto;
-}
-
-#test1 .box {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background: #420606;
-    transition: all 0.5s linear;
-    transform: rotateZ(180deg);
-}
-#test1 .box .head {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 8px;
-    background: #56f326;
-}
-
-#test2, #test3, #test4 {
-    padding: 15px;
-    height: 50px;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: 700;
-    line-height: 50px;
-    background: #484242;
+    background: #383126;
     color: #fff;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    margin: 15px auto;
+    text-align: center;
+    border-radius: 15px;
+}
+#test1 {
+    width: 500px;
+    line-height: 30px;
+    height: 100px;
+    padding: 15px;
 }
 #test4 {
     height: 300px;
 }
-
-#result-wrapper span{
+#test4 span {
     display: block;
-}
-#result-wrapper span:nth-child(1), #result-wrapper span:nth-child(3){
-    text-align: left;
 }

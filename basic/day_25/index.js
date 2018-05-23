@@ -20,9 +20,60 @@ let EventUtil = {
 
 
 // ------------------------------- 这里是任务一 -------------------------------------------
-let result = document.querySelector("p");
+const WIDTH = document.body.clientWidth;
+const HEIGHT = document.body.clientHeight;
+let box = document.querySelector(".box");
+let beginAngle = 0;
+EventUtil.addHandler(document, 'keydown', function (e) {
+    let key = e.keyCode;
+    switch (key) {
+        case 37:
+            turnLeft();
+            break;
+        case 38:
+                go();
+            break;
+        case 39:
+            turnRight();
+            break;
+        default:
+            break;
+    }
+});
+
+
 // 前进
-function go() {  
+function go() {
+    let left = parseInt(box.style.left);
+    let top = parseInt(box.style.top);
+    let t = Math.abs(beginAngle / 90);
+    let len = 30;
+    console.log(left);
+    console.log(top);
+    
+    
+    if (left == 0 && t == 1) {
+        t = t + 2;
+    } else if (top == 0 && t == 0) {
+        t = t + 2;
+    }
+    switch (t % 4) {
+        case 0:
+            box.style.top = (top - len) + 'px';
+            break;
+        case 1:
+            box.style.left = (left - len) + 'px';
+            break;
+        case 2:
+            box.style.top = (top + len) + 'px';
+            break;
+        case 3:
+            box.style.left = (left + len) + 'px';
+            break;
+        default:
+            break;
+    }
+    
 }
 // 多次前进
 function goSteps(n = 1) {
@@ -31,9 +82,7 @@ function goSteps(n = 1) {
     if (isNaN(n) || n < 0) {
         n = 0;
     }
-
     console.log(n);
-
     while (n > 0) {
         go();
         n--;
@@ -41,9 +90,8 @@ function goSteps(n = 1) {
 }
 // 左转
 function turnLeft(){
-    boxAngle = boxAngle-90;
-    box.style.transform = `rotateZ(${boxAngle}deg)`;
-    console.log(boxAngle);
+    beginAngle = parseInt(beginAngle) - 90;
+    box.style.transform = `rotateZ(${beginAngle}deg)`;
 };
 // 右转
 function turnRight() {
@@ -52,20 +100,19 @@ function turnRight() {
     turnLeft();
 }
 // 测试用例
-goSteps(10); // Go 10次
-goSteps(1); // Go 1次
-goSteps(); // Go 1次，认为缺少参数时，默认参数为1
-goSteps(0);  // 0次
-goSteps(-1);  // 0次
-goSteps(1.4);  // Go 1次
-goSteps(1.6);  // Go 1次
-goSteps(-1);  // 0次
-goSteps(true);  // Go 1次
-goSteps(false);  // 0次
-goSteps("Test");  // 0次
-goSteps(NaN);  // 0次
-goSteps(null);  // 0次
-
+// goSteps(10); // Go 10次
+// goSteps(1); // Go 1次
+// goSteps(); // Go 1次，认为缺少参数时，默认参数为1
+// goSteps(0);  // 0次
+// goSteps(-1);  // 0次
+// goSteps(1.4);  // Go 1次
+// goSteps(1.6);  // Go 1次
+// goSteps(-1);  // 0次
+// goSteps(true);  // Go 1次
+// goSteps(false);  // 0次
+// goSteps("Test");  // 0次
+// goSteps(NaN);  // 0次
+// goSteps(null);  // 0次
 //  ------------------------------- 这里是任务二 ---------------------------------------------
 
 
@@ -283,59 +330,3 @@ function getDay(n) {
     changeDate = num;
 }
 isTime3();
-// ------------------------------------------ 以下是待填坑，请忽略 ---------------------------------------
-
-// let box = document.querySelector("#test1 .box");
-// let direction = "bottom";
-// let boxAngle = angle(direction);
-// let btn = document.getElementById("btn1");
-
-// 前进
-// function go(n = 0) {
-    // let top = parseInt(box.style.marginTop);
-    // let left = parseInt(box.style.marginLeft);
-
-    // switch (direction) {
-    //     case "top":
-    //         box.style.marginTop = (top - n*30) + "px";
-    //         break;
-    //     case "right":
-    //         box.style.marginLeft = (left + n*30) + "px";
-    //         break;
-    //     case "bottom":
-    //         box.style.marginTop = (top + n*30) + "px";
-    //         break;
-    //     case "left":
-    //         box.style.marginLeft = (left - n*30) + "px";
-    //         break;
-    //     default:
-    //         break;
-    // }
-// };
-
-// 开始按钮
-// btn.addEventListener("click",function() {
-
-// },false);
-
-// 获取初始角度
-// function angle(direction) {
-//     let angle = 0;
-//     switch (direction) {
-//         case 'top':
-//             angle = 0;
-//             break;
-//         case 'right':
-//             angle = 90;
-//             break;
-//         case 'bottom':
-//             angle = 180;
-//             break;
-//         case 'left':
-//             angle = 270;
-//             break;
-//         default:
-//             break;
-//     }
-//     return angle;
-// }
