@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MIS系统</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <form action="pos" id="region-select">
+        地区：
+        <label for="">华东
+            <input type="checkbox" name="region" value="华东">
+        </label>
+        <label for="">华南
+            <input type="checkbox" name="region" value="华南">
+        </label>
+        <label for="">华北
+            <input type="checkbox" name="region" value="华北">
+        </label>
+        <label for="">全选
+            <input type="checkbox" name="region" id="region-all">
+        </label>
+    </form>
+    <form action="" id="product-select">
+        商品：
+        <label for="">手机
+            <input type="checkbox" name="product" value="手机">
+        </label>
+        <label for="">笔记本
+            <input type="checkbox" name="product" value="笔记本">
+        </label>
+        <label for="">智能音箱
+            <input type="checkbox" name="product" value="智能音箱">
+        </label>
+        <label for="">全选
+            <input type="checkbox" name="product" id="product-all">
+        </label>
+    </form>
+
+    <div class="table-wrapper">
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

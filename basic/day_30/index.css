@@ -1,0 +1,28 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.table-wrapper table {
+    border: 1px solid #e9e9e9;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+}
+.table-wrapper th, .table-wrapper td {
+    padding: 8px 16px;
+    border: 1px solid #e9e9e9;
+    text-align: center;
+    width: 50px;
+}
+.table-wrapper th {
+    background: #f7f7f7;
+    white-space: nowrap;
+}
+.table-wrapper table th:nth-child(1) {
+    width: 100px;
+}
