@@ -11,25 +11,6 @@
 
 <body>
     <div id="select-box">
-        <section id="region-select">
-            地区：
-            <div class="select-box">
-                <label>华东
-                    <input type="checkbox" name="region" value="华东">
-                </label>
-                <label>华南
-                    <input type="checkbox" name="region" value="华南">
-                </label>
-                <label >华北
-                    <input type="checkbox" name="region" value="华北">
-                </label>
-            </div>
-            <span class="allChoice">
-                <label>全选
-                    <input type="checkbox"  value="全选" id="allChoiceRegion">
-                </label>
-            </span>
-        </section>
         <section id="product-select">
             产品：
             <div class="select-box">
@@ -49,13 +30,34 @@
                 </label>
             </span>
         </section>
+        <section id="region-select">
+            地区：
+            <div class="select-box">
+                <label>华东
+                    <input type="checkbox" name="region" value="华东">
+                </label>
+                <label>华南
+                    <input type="checkbox" name="region" value="华南">
+                </label>
+                <label >华北
+                    <input type="checkbox" name="region" value="华北">
+                </label>
+            </div>
+            <span class="allChoice">
+                <label>全选
+                    <input type="checkbox"  value="全选" id="allChoiceRegion">
+                </label>
+            </span>
+        </section>
     </div>
     <table class="table-wrapper">
         <thead></thead>
         <tbody></tbody>
     </table>
-
-    <script src="index.js"></script>
+    <script src="SourceData.js"></script>
+    <script src="GetData.js"></script>
+    <script src="Table.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
