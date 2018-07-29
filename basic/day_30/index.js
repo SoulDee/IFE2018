@@ -1,21 +1,3 @@
-// 事件单元
-let EventUtil = {
-    addHandler: function (element, type, handler) {
-        if (element.addEventListener) {
-            element.addEventListener(type, handler, false);
-        } else if (element.attachEvent) {
-            element.attachEvent("on" + type, handler);
-        } else {
-            element["on" + type] = handler;
-        }
-    },
-    getEvent: function (event) {
-        return event ? event : window.event;
-    },
-    getTarget: function (event) {
-        return event.target || event.srcElement;
-    }
-};
 // 数据
 let sourceData = [{
         product: "手机",
@@ -54,141 +36,170 @@ let sourceData = [{
         region: "华南",
         sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
 }]
-let regions = document.getElementById('region-select'); // 地区表格
-let products = document.getElementById('product-select'); // 产品表格
-let tableWrapper = document.querySelector('.table-wrapper'); // 表格容器
-let selectedList = [[],[]]; // 选中的复选框的数组
-let regionAll = document.getElementById('region-all'); // 地区全选按钮
-let productAll = document.getElementById('product-all'); // 产品全选按钮
+// 表头数据
+let tableHead = ['商品', '地区', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',];
+// 当前选中选项
+let choiceSelect = [[], []];
 
+let regions = document.getElementById('region-select'), // 地区选项列表
+    tableWrapper = document.querySelector('.table-wrapper'), // 表格容器
+    thead = tableWrapper.querySelector('thead'), // 表头
+    tbody = tableWrapper.querySelector('tbody'), // 表格
+    products = document.getElementById('product-select'), // 产品选项列表
+    allChoiceRegion = document.getElementById('allChoiceRegion'), // 地区全选
+    allChoiceProduct = document.getElementById('allChoiceProduct'); // 产品全选
 
-function FormList(sourceData) {
-    this.sourceData = sourceData;
-}
-FormList.prototype = {
-    constructor: FormList,
+// 更改选项触发change事件
+regions.addEventListener('change', selectChange, false);
+products.addEventListener('change', selectChange, false);
+
+// 获取数据并渲染表格
+function selectChange(e) {
+    ChoiceLogic(e);
+    // 获取选项并获取数据
+    getChoiceSelect();
+    let data = getData(choiceSelect);
+    
     // 渲染表格
-    printTable: function (data) {
-        let table = document.createElement('table');
-        // 获得表头和正式表格
-        table.appendChild(newForm.printTableHead());
-        table.appendChild(newForm.printTableBody(newForm.objToArr(data)));
+    draw(data);
+}
 
-        tableWrapper.innerHTML = '';
-        tableWrapper.appendChild(table);
-    },
-    // 将对象转化为表格形式的数组
-    objToArr: function (data) {
-        let arrList = [];
-        for (let i = 0; i < data.length; i++) {
-            let arr = [];
-            arr.push(data[i].product);
-            arr.push(data[i].region);
-            for (let j = 0; j < data[i].sale.length; j++) {
-                arr.push(data[i].sale[j]);
-            }
-            arrList.push(arr);
-        }
-        return arrList;
-    },
-    // 获得表头
-    printTableHead: function () {
-        let tableThead = ['商品', '地区', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-            thead = document.createElement('thead'),
-            tr = document.createElement("tr");
-
-        for (let index = 0; index < tableThead.length; index++) {
-            let th = document.createElement("th");
-            th.innerText = tableThead[index];
-            tr.appendChild(th);
-        }
-        thead.appendChild(tr);
-        return thead;
-    },
-    // 获得正式表格
-    printTableBody: function (data) {
-        let tbody = document.createElement('tbody');
-
-        for (let i = 0; i < data.length; i++) {
-            let tr = document.createElement("tr");
-            for (let j = 0; j < data[i].length; j++) {
-                let td = document.createElement("td");
-                td.innerText = data[i][j];
-                tr.appendChild(td);
-            }
-            tbody.appendChild(tr);
-        }
-        return tbody;
+// 是否全选按钮
+function ChoiceLogic(e) {
+    if(e.target.value === '全选') {
+        allChoiceLogic(e);
+    } else{
+        choiceLogic(e);
     }
 }
 
-let newForm = new FormList();
+// 全选判断
+function allChoiceLogic(e) {
+    switch(e.target.id) {
+        case 'allChoiceRegion': allChoice(0, allChoiceRegion, regions);break;
+        case 'allChoiceProduct': allChoice(1, allChoiceProduct, products);break;
+        default:break;
+    } 
+}
 
-// 绑定change事件，重新渲染表格
-EventUtil.addHandler(document.body, 'change', function(event) {
-    // 清空并重新获取选中的数组
-    selectedList = [];
-    getChecked(regions);
-    getChecked(products);
-    // 获得过滤后数据并渲染
-    newForm.printTable(getData(selectedList));
-});
+// 全选逻辑
+function allChoice(index, target, box) {
+    getChoiceSelect();
+    if(choiceSelect[index].length === 3) {
+        target.checked = true;
+    } else {
+        let elements = box.querySelector('.select-box').querySelectorAll('input');
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].checked = true;
+            choiceSelect[index].push(elements[i].value);
+        }
+    };
+}
 
-// 判断是否全选
-function getChecked(el) { 
-    let arr = getChoice(el);
-    selectedList.push(arr);
-    if (arr.length === regions.elements.length - 1 && arr[length-1] !== 'on') {
-        choiceAll(el, true);
-    }else {
-
+// 单选逻辑
+function choiceLogic(e) {
+    getChoiceSelect();
+    let name = `${e.target.name}-select`;
+    let index,
+        all;
+    switch(name) {
+        case 'region-select':
+            index = 0;
+            all = allChoiceRegion;
+            break;
+        case 'product-select': 
+            index = 1;
+            all = allChoiceProduct;
+            break;
+        default:break;
+    }
+    if(choiceSelect[index].length === 0) {
+        e.target.checked = true;
+    } else if(choiceSelect[index].length === 3) {
+        all.checked = true;
+    } else {
+        all.checked = false;
     }
 }
-// 遍历选中数组
-function getChoice(el) {
+
+// 遍历选项，将选中的选项压入choiceSelect
+function getChoiceSelect() {
+    // 遍历地区
+    listChange(regions, 0);
+    // 遍历产品
+    listChange(products, 1);
+}
+
+// 遍历查找是否选中 参数为需要遍历的数组，存放到哪里的下标
+function listChange(el, index) {
+    choiceSelect[index] = [];
+    let element = el.querySelector('.select-box').querySelectorAll('input');
+    for (let i = 0; i < element.length; i++) {
+        if(element[i].checked) {
+            choiceSelect[index].push(element[i].value);
+        }
+    }
+}
+
+// 返回过滤后的数据
+function getData(choice) {
+    let data = sourceData;
+
+    if(choice[0].length > 0) data = dataFilter(data, 'region', choice[0]);
+    if(choice[1].length > 0) data = dataFilter(data, 'product', choice[1]);
+    return data;
+}
+
+// 数据过滤
+function dataFilter(data, type, condition) {
+    let newData = data.filter((item) => {
+        return condition.indexOf(item[type]) !== -1;
+    })
+    return newData;
+}
+
+// 渲染表格
+function draw(data) {
+    // 获取数组数据
+    let dataArray = data.map((item) => objToArray(item));
+    // 渲染表格，清空原内容插入table-wrapper
+    let docFrag = document.createDocumentFragment();
+    dataArray.map((item) => docFrag.appendChild(drawTable(item, 'td')));
+    tbody.innerHTML = '';
+    tbody.appendChild(docFrag);
+}
+
+// 将对象数据转换为数组
+function objToArray(items) {
     let arr = [];
-    for (let index = 0; index < el.elements.length; index++) {
-        if (el.elements[index].checked) {
-            arr.push(el.elements[index].value);
+    for(let item in items) {
+        if(items.hasOwnProperty(item)) {
+            if(items[item] instanceof Array) {
+                items[item].map((item => arr.push(item)));
+            } else {
+                arr.push(items[item]);
+            }
         }
     }
     return arr;
 }
 
-// 全选按钮绑定事件
-EventUtil.addHandler(regionAll, 'change', function() {
-    if (regionAll.checked) {
-        choiceAll(regions, true);
-    }else {
-        choiceAll(regions, false);
+// 绘制方法，参数为数据以及表格类型 th td
+function drawTable(data, type) {
+    let doc = document;
+    let tr = doc.createElement('tr');
+
+    for (let i = 0; i < data.length; i++) {
+        let td = doc.createElement(type);
+        td.innerText = data[i];
+        tr.appendChild(td);
     }
-});
-EventUtil.addHandler(productAll, 'change', function () {
-    if (productAll.checked) {
-        choiceAll(products, true);
-    } else {
-        choiceAll(products, false);
-    }
-});
-// 全选或者全不选
-function choiceAll(el, statu) {
-    for (let index = 0; index < el.elements.length; index++) {
-        el.elements[index].checked = statu;        
-    }
+    return tr;
 }
 
-// 根据select选项获取数据并过滤
-function getData(arr) {
-    let arr0 = arr[0];
-    let arr1 = arr[1];
-
-    if (arr0.length > 0 && arr1.length > 0) {
-        return sourceData.filter(function (item) {
-            return arr0.indexOf(item.region) !== -1 && arr1.indexOf(item.product) !== -1;
-        });
-    }
-    return sourceData.filter(function(item) {
-        return arr0.indexOf(item.region) !== -1 || arr1.indexOf(item.product) !== -1;
-    });
-}
-newForm.printTable(getData(selectedList));
+// 开始的时候 绘制表头 绘制表格
+(() => {
+    let th = drawTable(tableHead, 'th');
+    thead.appendChild(th);
+    draw(sourceData);
+})()

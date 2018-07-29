@@ -3,26 +3,41 @@ body, html {
     padding: 0;
 }
 
-.table-wrapper {
-    display: flex;
-    justify-content: center;
+
+/* 选项框样式 */
+#select-box {
+    margin: 30px auto;
+    width: 450px;
 }
-.table-wrapper table {
+#select-box > section {
+    border: 1px solid #a3a3a3;
+    padding: 8px 16px;
+}
+
+/* 表格样式 */
+.table-wrapper {
     border: 1px solid #e9e9e9;
     border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
+    margin: auto;
 }
 .table-wrapper th, .table-wrapper td {
     padding: 8px 16px;
     border: 1px solid #e9e9e9;
     text-align: center;
-    width: 50px;
+    width: 60px;
 }
 .table-wrapper th {
     background: #f7f7f7;
     white-space: nowrap;
 }
+.table-wrapper td {
+    font-size: 14px;
+}
 .table-wrapper table th:nth-child(1) {
     width: 100px;
+}
+.select-box {
+    display: inline-block;
 }

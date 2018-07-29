@@ -10,39 +10,50 @@
 </head>
 
 <body>
-    <form action="pos" id="region-select">
-        地区：
-        <label for="">华东
-            <input type="checkbox" name="region" value="华东">
-        </label>
-        <label for="">华南
-            <input type="checkbox" name="region" value="华南">
-        </label>
-        <label for="">华北
-            <input type="checkbox" name="region" value="华北">
-        </label>
-        <label for="">全选
-            <input type="checkbox" name="region" id="region-all">
-        </label>
-    </form>
-    <form action="" id="product-select">
-        商品：
-        <label for="">手机
-            <input type="checkbox" name="product" value="手机">
-        </label>
-        <label for="">笔记本
-            <input type="checkbox" name="product" value="笔记本">
-        </label>
-        <label for="">智能音箱
-            <input type="checkbox" name="product" value="智能音箱">
-        </label>
-        <label for="">全选
-            <input type="checkbox" name="product" id="product-all">
-        </label>
-    </form>
-
-    <div class="table-wrapper">
+    <div id="select-box">
+        <section id="region-select">
+            地区：
+            <div class="select-box">
+                <label>华东
+                    <input type="checkbox" name="region" value="华东">
+                </label>
+                <label>华南
+                    <input type="checkbox" name="region" value="华南">
+                </label>
+                <label >华北
+                    <input type="checkbox" name="region" value="华北">
+                </label>
+            </div>
+            <span class="allChoice">
+                <label>全选
+                    <input type="checkbox"  value="全选" id="allChoiceRegion">
+                </label>
+            </span>
+        </section>
+        <section id="product-select">
+            产品：
+            <div class="select-box">
+                <label>手机
+                    <input type="checkbox" name="product" value="手机">
+                </label>
+                <label>笔记本
+                    <input type="checkbox" name="product" value="笔记本">
+                </label>
+                <label>智能音箱
+                    <input type="checkbox" name="product" value="智能音箱">
+                </label>
+            </div>
+            <span class="allChoice">
+                <label>全选
+                    <input type="checkbox"  value="全选" id="allChoiceProduct">
+                </label>
+            </span>
+        </section>
     </div>
+    <table class="table-wrapper">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
 
     <script src="index.js"></script>
 </body>
