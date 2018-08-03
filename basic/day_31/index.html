@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MIS系统</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 
 <body>
+    <!-- 选择框 -->
     <div id="select-box">
         <section id="product-select">
             产品：
@@ -50,14 +51,26 @@
             </span>
         </section>
     </div>
+    <!-- svg柱状图 -->
+    <svg id="chart" xmlns="http://www.w3.org/2000/svg" version="1.1"
+    preserveAspectRatio="xMidYMid slice"
+    style="height: 300px;width: 600px; position:absolute; top:70px; left:100px; z-index:-1;">
+    </svg>
+    <!-- canvas折线图 -->
+    <canvas width="600px" height="300px" id="canvas" style="position: absolute; top: 70px; right: 100px;">
+        您的浏览器不支持canvas，请更换浏览器
+    </canvas>
+    <!-- 表单 -->
     <table class="table-wrapper">
         <thead></thead>
         <tbody></tbody>
     </table>
-    <script src="SourceData.js"></script>
-    <script src="GetData.js"></script>
-    <script src="Table.js"></script>
-    <script src="app.js"></script>
+    <script src="source/SourceData.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/getData.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

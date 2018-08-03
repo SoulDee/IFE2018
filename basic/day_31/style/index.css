@@ -6,16 +6,22 @@ body, html {
 
 /* 选项框样式 */
 #select-box {
-    margin: 30px auto;
-    width: 450px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 14px;
 }
 #select-box > section {
+    display: inline-block;
     border: 1px solid #a3a3a3;
-    padding: 8px 16px;
+    padding: 5px 10px;
 }
 
 /* 表格样式 */
 .table-wrapper {
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    transform: translate(-50%);
     border: 1px solid #e9e9e9;
     border-collapse: collapse;
     border-spacing: 0;
@@ -23,7 +29,7 @@ body, html {
     margin: auto;
 }
 .table-wrapper th, .table-wrapper td {
-    padding: 8px 16px;
+    padding: 6px 12px;
     border: 1px solid #e9e9e9;
     text-align: center;
     width: 60px;
@@ -31,9 +37,10 @@ body, html {
 .table-wrapper th {
     background: #f7f7f7;
     white-space: nowrap;
+    font-size: 14px;
 }
 .table-wrapper td {
-    font-size: 14px;
+    font-size: 12px;
 }
 .table-wrapper table th:nth-child(1) {
     width: 100px;

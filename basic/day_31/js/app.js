@@ -93,6 +93,25 @@ function listChange(el, index) {
     }
 }
 
+function setData(e) {
+    let arr = postChart.data || lineChart.data;
+    // 是否表头
+    let val = e.target.parentNode.childNodes[2].innerText;
+    if(val !== '1月') {
+        let tdList = e.target.parentNode.childNodes;
+        for (let i = 1; i < tdList.length; i++) {
+            arr[i-1] = (parseInt(tdList[i].innerText));
+        };
+        // 是否为首行
+        if(arr.length === 13) arr.shift();
+    }
+    return arr;
+}
+
+
+tbody.addEventListener('mouseover', lineChart.changeData, false);
+tbody.addEventListener('mouseover', postChart.changeData, false);
+
 // 开始的时候自动调用一次 绘制表头 绘制表格
 (() => {
     let regionList = document.querySelectorAll('input');
@@ -100,5 +119,4 @@ function listChange(el, index) {
         regionList[i].checked = true;
     }
 })();
-
 draw(getData(choiceSelect));
