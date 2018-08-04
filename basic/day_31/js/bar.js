@@ -20,14 +20,11 @@ let postChart = {
         chart.appendChild(frag);
     },
     changeData: function(e) {
-        postChart.data = setData(e);   
+        postChart.data = setData(e);
         chart.innerHTML = '';
         postChart.draw(postChart.data);
     }
 }
-
-
-
 
 /*
  * 制造一个svg元素 传入两个参数  

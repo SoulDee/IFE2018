@@ -13,14 +13,6 @@ let regions = document.getElementById('region-select'), // 地区选项列表
 regions.addEventListener('change', selectChange, false);
 products.addEventListener('change', selectChange, false);
 
-// 获取数据并渲染表格
-function selectChange(e) {
-    ChoiceLogic(e);
-    getChoiceSelect();
-    let data = getData(choiceSelect);
-    draw(data);
-}
-
 // 是否全选按钮
 function ChoiceLogic(e) {
     if(e.target.value === '全选') {
@@ -93,6 +85,7 @@ function listChange(el, index) {
     }
 }
 
+// 改变数据
 function setData(e) {
     let arr = postChart.data || lineChart.data;
     // 是否表头
@@ -108,7 +101,7 @@ function setData(e) {
     return arr;
 }
 
-
+// 鼠标滑过表格事件
 tbody.addEventListener('mouseover', lineChart.changeData, false);
 tbody.addEventListener('mouseover', postChart.changeData, false);
 
@@ -120,3 +113,50 @@ tbody.addEventListener('mouseover', postChart.changeData, false);
     }
 })();
 draw(getData(choiceSelect));
+
+
+let choiceColor = [
+    {
+        name: '',
+        color: 'blue'
+    },
+
+]
+
+// 过滤绘制图表需要数据
+function filterChartData(data) {
+    let arr = [];
+    for (let i = 0; i < data.length; i++) {
+        let newData = data[i].filter((item) => typeof item === 'number');
+        arr.push(newData);
+    }
+    return arr;
+}
+
+// 绘制多个折线
+function drawChart() {
+    let data = filterChartData(getData(choiceSelect));
+    let pixiv = getPixiv(data);
+    ctx.clearRect(0, 0, 600, 300);
+    drawXY(ctx);
+    for (let i = 0; i < data.length; i++) {
+        // postChart.draw(data[i]);
+        drawLine(data[i], pixiv, colorList[i]);
+    }
+}
+
+// 获取比例
+function getPixiv(data) {
+    let max = 0;
+    for (let i = 0; i < data.length; i++) {
+        let num = Math.max.apply(null, data[i]);
+        if (num > max) {
+            max = num;
+        }
+    }
+    return max/lineChart.chartHeight;
+}
+
+drawChart();
+
+tableWrapper.addEventListener('mouseout', drawChart, false);

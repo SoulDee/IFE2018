@@ -37,24 +37,25 @@ function getPointXY(data, i, diff, pixiv) {
     }
 }
 // 绘制数据点
-function drawPoint(point, data, ctx) {
+function drawPoint(point, data, ctx, color) {
     ctx.beginPath();
+    ctx.fillStyle = color;
     ctx.lineWidth = 2;
-    ctx.strokeStyle = data.color;
     ctx.arc(point.x, point.y, data.r, 0, 2*Math.PI);
-    ctx.stroke();
+    ctx.fill();
     ctx.closePath();
 }
 // 绘制折线
-function drawLine(data, pixiv) {
+function drawLine(data, pixiv, color) {
     let fontPoint = {};
         for (let i = 0; i < data.length; i++) {
             let point = getPointXY(data[i], i, lineChart.diff, pixiv);
-            drawPoint(point, lineChart.PointData, ctx);
+            drawPoint(point, lineChart.PointData, ctx, color);
             
             if (i !== 0) {
                 ctx.beginPath();
                 ctx.lineWidth = 1;
+                ctx.strokeStyle = color;
                 ctx.moveTo(point.x, point.y);
                 ctx.lineTo(fontPoint.x, fontPoint.y);
                 ctx.stroke();

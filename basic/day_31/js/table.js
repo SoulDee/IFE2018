@@ -40,3 +40,11 @@ function drawTable(data, type) {
     }
     return tr;
 }
+
+// 获取数据并渲染表格
+function selectChange(e) {
+    ChoiceLogic(e);
+    getChoiceSelect();
+    let data = getData(choiceSelect);
+    draw(data);
+}

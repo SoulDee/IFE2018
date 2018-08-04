@@ -1,17 +1,12 @@
 // 返回过滤后的数据
 function getData(choice) {
     let data = sourceData;
-    // 过滤
-    if(choice[0].length > 0) data = dataFilter(data, 'product', choice[0]);
-    if(choice[1].length > 0) data = dataFilter(data, 'region', choice[1]);
-    // 转换为数组
+    // 过滤 转换为数组 排序
+    data = filterData(data, choice);
     data = data.map((item) => objToArray(item));
-    // 排序
-    data = data.sort(function(a, b) {
-        return a[0] - b[0];
-    });
+    data = data.sort((a, b) => a[0] - b[0]);
     // 交换
-    if(choiceSelect[0].length > choiceSelect[1].length && choiceSelect[1].length === 1) {
+    if(choice[0].length > choice[1].length && choice[1].length === 1) {
         data = exChange(data);
     };
     // 将重复项制空，方便后面的表格绘制
@@ -26,13 +21,16 @@ function exChange(data) {
     }
     return data;
 }
+// 过滤过程
+function filterData(data, choice) {
+    if(choice[0].length > 0) data = dataFilter(data, 'product', choice[0]);
+    if(choice[1].length > 0) data = dataFilter(data, 'region', choice[1]);
+    return data
+}
 
 // 数据过滤
 function dataFilter(data, type, condition) {
-    let newData = data.filter((item) => {
-        return condition.indexOf(item[type]) !== -1;
-    })
-    return newData;
+    return data.filter((item) => condition.indexOf(item[type]) !== -1);
 }
 
 // 去除相同项目
