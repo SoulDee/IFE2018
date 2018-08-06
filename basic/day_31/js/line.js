@@ -12,17 +12,20 @@ let lineChart = {
         let max = Math.max.apply(null, data);
         let pixiv = max/lineChart.chartHeight;
         drawXY(ctx);
-        drawLine(data, pixiv);
+        drawLine(data, pixiv, 'black');
     },
     changeData: function(e) {
-        lineChart.data = setData(e);
-        ctx.clearRect(0, 0, 600, 300);
-        lineChart.draw(lineChart.data);
+        if (e.target.tagName === 'TD') {
+            lineChart.data = setData(e);
+            ctx.clearRect(0, 0, 600, 300);
+            lineChart.draw(lineChart.data);
+        }
     }
 }
 // 绘制xy轴
 function drawXY(ctx) {
     ctx.beginPath();
+    ctx.strokeStyle = '#000';
     ctx.lineWidth = 3;
     ctx.moveTo(0, 0);
     ctx.lineTo(0, 300);
@@ -66,5 +69,3 @@ function drawLine(data, pixiv, color) {
             fontPoint.y = point.y;
         } 
 }
-
-lineChart.draw(lineChart.data);

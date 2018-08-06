@@ -1,6 +1,7 @@
 // 返回过滤后的数据
 function getData(choice) {
-    let data = sourceData;
+    let data = localStorage.data ? JSON.parse(localStorage.data): sourceData;
+    
     // 过滤 转换为数组 排序
     data = filterData(data, choice);
     data = data.map((item) => objToArray(item));
@@ -9,7 +10,7 @@ function getData(choice) {
     if(choice[0].length > choice[1].length && choice[1].length === 1) {
         data = exChange(data);
     };
-    // 将重复项制空，方便后面的表格绘制
+    // 将地区产品的重复项制空，方便后面的表格绘制
     data = clearRepeat(data);
     return data;
 }

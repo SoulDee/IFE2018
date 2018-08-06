@@ -8,6 +8,7 @@ let postChart = {
         let frag = document.createDocumentFragment();
         let max = getBarsMax(data);
         let pixiv = max/300;
+        chart.innerHTML = '';
         // 绘制轴
         makeSvg('line',{x1:0, y1:0, x2:0, y2:300, stroke:'black', 'stroke-width': 3}, frag);
         makeSvg('line',{x1:0, y1:300, x2:600, y2:300, stroke:'black', 'stroke-width': 3}, frag);
@@ -20,9 +21,10 @@ let postChart = {
         chart.appendChild(frag);
     },
     changeData: function(e) {
-        postChart.data = setData(e);
-        chart.innerHTML = '';
-        postChart.draw(postChart.data);
+        if (e.target.tagName === 'TD') {
+            postChart.data = setData(e);
+            postChart.draw(postChart.data);
+        } 
     }
 }
 
@@ -53,5 +55,3 @@ function getRect(data, i) {
     rect.fill = postChart.barColor;
     return rect;
 }
-
-postChart.draw(postChart.data);
