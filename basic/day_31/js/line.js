@@ -69,3 +69,14 @@ function drawLine(data, pixiv, color) {
             fontPoint.y = point.y;
         } 
 }
+
+// 绘制多个折线
+function drawChart() {
+    let data = filterChartData(getData(choiceSelect));
+    let pixiv = getPixiv(data);
+    ctx.clearRect(0, 0, 600, 300);
+    drawXY(ctx);
+    for (let i = 0; i < data.length; i++) {
+        drawLine(data[i], pixiv, colorList[i]);
+    }
+}

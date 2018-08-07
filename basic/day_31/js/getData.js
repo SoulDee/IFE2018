@@ -7,7 +7,7 @@ function getData(choice) {
     data = data.map((item) => objToArray(item));
     data = data.sort((a, b) => a[0] - b[0]);
     // 交换
-    if(choice[0].length > choice[1].length && choice[1].length === 1) {
+    if(isExChange()) {
         data = exChange(data);
     };
     // 将地区产品的重复项制空，方便后面的表格绘制
@@ -24,8 +24,8 @@ function exChange(data) {
 }
 // 过滤过程
 function filterData(data, choice) {
-    if(choice[0].length > 0) data = dataFilter(data, 'product', choice[0]);
-    if(choice[1].length > 0) data = dataFilter(data, 'region', choice[1]);
+    if(choice.product.length > 0) data = dataFilter(data, 'product', choice.product);
+    if(choice.region.length > 0) data = dataFilter(data, 'region', choice.region);
     return data
 }
 
