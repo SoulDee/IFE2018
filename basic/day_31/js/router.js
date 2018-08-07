@@ -15,7 +15,7 @@ setStatus = () => history.pushState(choiceSelect, null, getStatus());;
 getStatus = () => serialize(choiceSelect);
 // 监控是否前进或者后退
 window.onpopstate = (e) => {
-    var currentState = history.state;
+    var currentState = history.state; 
     if (currentState) historyDraw(currentState);
 }
 // 监控是否前进后退

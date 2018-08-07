@@ -199,6 +199,7 @@ tbody.addEventListener('mouseover', postChart.changeData, false);
         inputList[i].checked = true;
     }
 })();
+setStatus();
 drawChart();
 postChart.draw(localStorage.data ? JSON.parse(localStorage.data)[0].sale: sourceData[0].sale);
 draw(getData(choiceSelect));
