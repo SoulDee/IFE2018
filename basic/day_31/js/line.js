@@ -2,7 +2,6 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 let lineChart = {
     data: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270],
-    chartHeight: 300,
     diff: 45,
     PointData: {
         r: 3,
@@ -10,7 +9,7 @@ let lineChart = {
     },
     draw: function(data) {
         let max = Math.max.apply(null, data);
-        let pixiv = max/lineChart.chartHeight;
+        let pixiv = max/300;
         drawXY(ctx);
         drawLine(data, pixiv, 'black');
     },
@@ -19,6 +18,22 @@ let lineChart = {
             lineChart.data = setData(e);
             ctx.clearRect(0, 0, 600, 300);
             lineChart.draw(lineChart.data);
+        }
+    },
+    drawChart: function() {
+        let data = useData();
+        // 数据过滤
+        data = filterData(data, choiceSelect);
+        // 对象转数组
+        data = data.map((item) => objToArray(item));
+        // 删除前缀
+        data = data.map((item) => delPrefix(item));
+        
+        let pixiv = getPixiv(data);
+        ctx.clearRect(0, 0, 600, 300);
+        drawXY(ctx);
+        for (let i = 0; i < data.length; i++) {
+            drawLine(data[i], pixiv, colorList[i]);
         }
     }
 }
@@ -51,32 +66,20 @@ function drawPoint(point, data, ctx, color) {
 // 绘制折线
 function drawLine(data, pixiv, color) {
     let fontPoint = {};
-        for (let i = 0; i < data.length; i++) {
-            let point = getPointXY(data[i], i, lineChart.diff, pixiv);
-            drawPoint(point, lineChart.PointData, ctx, color);
-            
-            if (i !== 0) {
-                ctx.beginPath();
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = color;
-                ctx.moveTo(point.x, point.y);
-                ctx.lineTo(fontPoint.x, fontPoint.y);
-                ctx.stroke();
-                ctx.closePath();
-            }
-    
-            fontPoint.x = point.x;
-            fontPoint.y = point.y;
-        } 
-}
-
-// 绘制多个折线
-function drawChart() {
-    let data = filterChartData(getData(choiceSelect));
-    let pixiv = getPixiv(data);
-    ctx.clearRect(0, 0, 600, 300);
-    drawXY(ctx);
     for (let i = 0; i < data.length; i++) {
-        drawLine(data[i], pixiv, colorList[i]);
-    }
+        let point = getPointXY(data[i], i, lineChart.diff, pixiv);
+        drawPoint(point, lineChart.PointData, ctx, color);
+        
+        if (i !== 0) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = color;
+            ctx.moveTo(point.x, point.y);
+            ctx.lineTo(fontPoint.x, fontPoint.y);
+            ctx.stroke();
+            ctx.closePath();
+        }
+        fontPoint.x = point.x;
+        fontPoint.y = point.y;
+    } 
 }

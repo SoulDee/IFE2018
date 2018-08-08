@@ -12,13 +12,14 @@ let regions = document.getElementById('region-select'), // 地区选项列表
     allChoiceRegion = document.getElementById('allChoiceRegion'), // 地区全选
     allChoiceProduct = document.getElementById('allChoiceProduct'); // 产品全选
 
-// 产品是否大于地区 是否要交换
+// 产品数量是否大于地区 是否要交换
 isExChange = () => choiceSelect.product.length > choiceSelect.region.length && choiceSelect.region.length === 1;
-
+// 是否存在缓存的数据
+useData = () => localStorage.data ? JSON.parse(localStorage.data): sourceData;
 // 是否全选按钮
 isAllChoice = (e) => e.target.value === '全选' ? allChoice(e) : oneChoice(e);
 
-// 全选判断
+// 全选判断 是哪一个全选
 function allChoice(e) {
     switch(e.target.id) {
         case 'allChoiceRegion': allChoiceLogic('region', allChoiceRegion, regions);break;
@@ -44,8 +45,8 @@ function allChoiceLogic(type, target, box) {
 function oneChoice(e) {
     getChoiceSelect();
     let name = `${e.target.name}-select`;
-    let type,
-        all;
+    let type = '',
+        all = null;
     switch(name) {
         case 'region-select':
             type = 'region';
@@ -57,6 +58,7 @@ function oneChoice(e) {
             break;
         default:break;
     }
+    // 当前选项是否为0，是的话阻止默认事件 
     if(choiceSelect[type].length === 0) {
         e.target.checked = true;
     } else if(choiceSelect[type].length === 3) {
@@ -93,6 +95,16 @@ function setData(e) {
     // 是否为首行
     if(arr.length === 13) arr.shift();
     return arr;
+}// 数据更改事件
+function setData(e) {
+    let arr = postChart.data || lineChart.data;
+    let tdList = e.target.parentNode.childNodes;
+    for (let i = 1; i < tdList.length; i++) {
+        arr[i-1] = (parseInt(tdList[i].querySelector('span').innerText));
+    };
+    // 是否为首行
+    if(arr.length === 13) arr.shift();
+    return arr;
 }
 
 // 过滤绘制图表需要数据
@@ -114,7 +126,7 @@ function getPixiv(data) {
             max = num;
         }
     }
-    return max/lineChart.chartHeight;
+    return max/300;
 }
 
 // 修改的数据并保存到localStorage
@@ -124,7 +136,7 @@ function savaLocalStorage(data) {
 
 // 更新本地数据
 function updataLocal(td, val) {
-    let data = localStorage.data ? JSON.parse(localStorage.data): sourceData;
+    let data = useData();
     let trIndex = td.parentNode.getAttribute('tr-index');
     let tdIndex = td.getAttribute('td-index')-2;
     let product = td.parentNode.childNodes[0].childNodes[0].innerText;
@@ -155,9 +167,7 @@ tableWrapper.addEventListener('click', function(e) {
     // 点击编辑
     if (NClass.contains('editor')) {
         // 检查是否已经有出于活动中的表格
-        if (document.querySelector('.active')) {
-            closeUpdata();
-        }
+        if(document.querySelector('.active')) closeUpdata();
         e.target.parentNode.classList.add('active');
         editorData();
     }
@@ -169,18 +179,25 @@ tableWrapper.addEventListener('click', function(e) {
     if (NClass.contains('close')) {
         closeUpdata();
     }
+}, false);
+
+// 按月分组
+function monthPacket(data) {
+    let months = [];
+    for (let i = 0; i < 12; i++) {
+        let month = [];
+        for (let j = 0; j < data.length; j++) {
+            month.push(data[j][i]);
+        }
+        months.push(month);
+    }
+    return months;
 }
-, false);
-// 获取单个tr数据
-function getTrData(tr) {
-    let list = tr.childNodes;
-    let arr = [];
-    for (let i = 1; i < list.length; i++) {
-        arr.push( ( parseInt( list[i].querySelector('span').innerText ) ) );
-    };
-    // 是否为首行
-    if(arr.length === 13) arr.shift();
-    return arr;
+
+// 重新绘制多数据图
+function drawChart() {
+    lineChart.drawChart();
+    postChart.drawChart();
 }
 
 // 更改选项触发change事件
@@ -201,5 +218,9 @@ tbody.addEventListener('mouseover', postChart.changeData, false);
 })();
 setStatus();
 drawChart();
-postChart.draw(localStorage.data ? JSON.parse(localStorage.data)[0].sale: sourceData[0].sale);
 draw(getData(choiceSelect));
+
+
+
+
+

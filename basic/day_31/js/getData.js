@@ -1,7 +1,6 @@
 // 返回过滤后的数据
 function getData(choice) {
-    let data = localStorage.data ? JSON.parse(localStorage.data): sourceData;
-    
+    let data = useData();
     // 过滤 转换为数组 排序
     data = filterData(data, choice);
     data = data.map((item) => objToArray(item));
@@ -14,6 +13,10 @@ function getData(choice) {
     data = clearRepeat(data);
     return data;
 }
+
+// 删除前缀的产品和地区
+delPrefix = (item) => item.splice(2);
+
 
 // 交换
 function exChange(data) {
@@ -28,11 +31,8 @@ function filterData(data, choice) {
     if(choice.region.length > 0) data = dataFilter(data, 'region', choice.region);
     return data
 }
-
 // 数据过滤
-function dataFilter(data, type, condition) {
-    return data.filter((item) => condition.indexOf(item[type]) !== -1);
-}
+dataFilter = (data, type, condition) => data.filter((item) => condition.indexOf(item[type]) !== -1);
 
 // 去除相同项目
 function clearRepeat(data) {

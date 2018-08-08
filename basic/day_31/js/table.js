@@ -57,7 +57,6 @@ function selectChange(e) {
     draw(getData(choiceSelect));
     drawChart();
     setStatus();
-    // setHash();
 }
 
 // 插入表格中的额外内容
@@ -118,7 +117,6 @@ function saveUpdate() {
         td.querySelector('.close').classList.add('disappear');
         td.classList.remove('active');
         drawChart();
-        postChart.draw(getTrData(tr));
     } else {
         alert('请输入数字');
     }

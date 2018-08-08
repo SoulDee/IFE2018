@@ -18,7 +18,7 @@ window.onpopstate = (e) => {
     var currentState = history.state; 
     if (currentState) historyDraw(currentState);
 }
-// 监控是否前进后退
+// 根据状态的更改进行动作
 function historyDraw(obj) {
     choiceSelect = obj;
     inputChange();
