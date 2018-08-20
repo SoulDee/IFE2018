@@ -7,11 +7,20 @@ let getSingle = function( fn ){
 };
 
 // 产生一个a 到 b-1的随机数
-let aRandom = (a = 0,b = 1) => Math.floor( Math.random() * (b-a+1) ) + a;
+let aRandom = (a = 0,b = 10) => Math.floor( Math.random() * (b-a+1) ) + a;
 // 单例厨师
 let createCook = getSingle( (id, name, salary) => new Cook(id, name, salary));
 // 单例服务员
 let createWaiter = getSingle( (id, name, salary) => new Waiter(id, name, salary));
+// 产生一个不重复的随机数数组
+let someRandom = (len) => {
+    let list = [];
+    while(list.length <= len) {
+        list.push(aRandom(0, len-1));
+    }
+    return Array.from(new Set(list));
+}
+
 
 // 餐厅类
 // 属性：金钱，座位数量、职员列表
@@ -49,16 +58,22 @@ class Restaurant {
     // 添加新的菜品
     addMenu(menuList) {
         let that = this;
-        menuList.map( (item) => that.menu.push(new ShopMenu(item.name, item.cost, item.price)) );
-        console.log('添加了新的价格表：');
-        console.log(JSON.parse(JSON.stringify(this.menu)));
+        if (menuList instanceof Array) {
+            menuList.map( (item) => {
+                console.log(`餐厅新增加了一个菜品：${item.name} ￥${item.price}`);
+                return that.menu.push(new ShopMenu(item.name, item.cost, item.price, item.time));
+            });
+        } else {
+            console.log(`餐厅新增加了一个菜品：${menuList.name} ￥${menuList.price}`);
+            that.menu.push(new ShopMenu(menuList.name, menuList.cost, menuList.price, menuList.time));
+        }
+        
     }
-
+    // 生成客户用的菜单
     addclientMenu(menu) {
         let that = this;
         menu.map( (item) => that.clientMenu.push(new ClientMenu(item.name, item.price)) );
-        console.log(`添加了新的菜单`);
-        console.log(JSON.parse(JSON.stringify(this.clientMenu)));
+        return this.clientMenu;
     }
 }
 
@@ -87,10 +102,10 @@ class Waiter extends Staff {
     // 工作
     working(food) {
         if (food instanceof Array) {
-            console.log(`顾客点了${food[0]}`);
+            console.log(`顾客点了${food}`);
             return food;
         } else {
-            console.log('服务员给顾客上菜了');
+            console.log(`服务员给顾客上了${food}`);
             return food;
         }
     }
@@ -102,10 +117,14 @@ class Cook extends Staff {
     constructor(id, name, salary) {
         super(id, name, salary);
     }
+    getFoodsList(res, foods) {
+        return res.menu.filter((item) => foods.indexOf(item.name) !== -1);
+    }
     // 工作
-    working(name) {
-        console.log(`厨师煮好了${name}`);
-        return new Greens(name);
+    working(food, item) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, food.time*timeUnits, item, new Greens(food.name));
+        });
     }
 }
 
@@ -115,18 +134,33 @@ class Cook extends Staff {
 class Customer {
     constructor() {
         this.foods = [];
+        this.statu = false;
     }
     // 点餐
     order(clientMenu) {
         let foodList = [];
-        let food = clientMenu[aRandom(1, clientMenu.length)-1].name;
-        foodList.push(food);
+        let arr = someRandom(clientMenu.length);
+        for (let i = 0; i < arr.length; i++) {
+            let food = clientMenu[arr[i]].name;
+            foodList.push(food);
+        }
         return foodList;
     }
-    // 吃饭
+    // 吃的动作
+    eatFood(food) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 3*timeUnits, food.name);
+        })
+    }
+    // 吃饭过程
     eat() {
-        let eated = this.foods.pop();
-        console.log(`顾客吃完了${eated.name}`);
+        while(this.foods.length > 0) {
+            const food = this.foods.pop();
+            this.eatFood(food).then((name) => {
+                console.log(`顾客吃完了${name}`);
+            });
+        }
+        this.statu = false;
     }
 }
 
@@ -141,10 +175,11 @@ class Greens {
 // 商店内部的菜单
 // 属性：名字、烹饪成本、价格
 class ShopMenu {
-    constructor(name, cost, price) {
+    constructor(name, cost, price, time) {
         this.name = name;
         this.cost = cost;
         this.price = price;
+        this.time = time;
     }
 }
 
